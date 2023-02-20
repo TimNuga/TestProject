@@ -15,6 +15,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { ServeStaticModule } from "@nestjs/serve-static";
 import { ServeStaticOptionsService } from "./serveStaticOptions.service";
 import { GraphQLModule } from "@nestjs/graphql";
+import { SaleModule } from './sale/sale.module';
 
 @Module({
   controllers: [],
@@ -48,6 +49,7 @@ import { GraphQLModule } from "@nestjs/graphql";
       inject: [ConfigService],
       imports: [ConfigModule],
     }),
+    SaleModule,
   ],
   providers: [
     {

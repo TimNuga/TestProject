@@ -15,6 +15,7 @@ import { Address } from "../../address/base/Address";
 import { ValidateNested, IsOptional, IsDate, IsString } from "class-validator";
 import { Type } from "class-transformer";
 import { Order } from "../../order/base/Order";
+import { Sale } from "../../sale/base/Sale";
 
 @ObjectType()
 class Customer {
@@ -95,6 +96,15 @@ class Customer {
     nullable: true,
   })
   phone!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Sale],
+  })
+  @ValidateNested()
+  @Type(() => Sale)
+  @IsOptional()
+  sales?: Array<Sale>;
 
   @ApiProperty({
     required: true,
